@@ -1,3 +1,8 @@
-require './app'
+require 'rubygems'
 
-run HelloWorldApp
+require 'bundler/setup'
+Bundler.require
+
+require_all 'app'
+
+run ApplicationController
