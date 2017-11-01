@@ -1,6 +1,10 @@
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
 
+  configure :development do
+    register Sinatra::Reloader
+  end
+
   get '/cars' do
     @cars = Car.all
     @cars = @cars.where(brand: params[:brand]) if params[:brand]
