@@ -37,6 +37,7 @@ Para criar migrations
 
 ```console
 $ bundle exec rake db:create_migration NAME=create_cars
+$ bundle exec rake db:create_migration NAME=create_tokens
 ```
 
 Para rodar migrate
@@ -70,6 +71,17 @@ $ bin/console
 HINT: Certifique-se de dar um `chmod +x bin/console` para que ele seja executável.
 
 #### Rotas disponíveis
+
+Antes de acessar, gere um Token
+
+```console
+$ bin/console
+
+2.4.2 :001 > Token.create
+=> #<Token id: 2, token: "056aa05b30011034ae9a6d7239dede85">
+```
+
+Agora use o Token que foi gerado no lugar do `secret` abaixo.
 
 ##### GET /cars
 
