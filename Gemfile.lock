@@ -24,6 +24,8 @@ GEM
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
+    rack-token_auth (0.1.0)
+      rack
     rake (12.2.1)
     require_all (1.4.0)
     sinatra (2.0.0)
@@ -52,6 +54,7 @@ PLATFORMS
 
 DEPENDENCIES
   puma
+  rack-token_auth
   rake
   require_all
   sinatra

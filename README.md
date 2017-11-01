@@ -76,14 +76,14 @@ HINT: Certifique-se de dar um `chmod +x bin/console` para que ele seja executáv
 Traz todos os carros cadastrados
 
 ```console
-$ curl localhost:9292/cars
+$ curl localhost:9292/cars -H 'Authorization: Token token=secret'
 -> [{"id":1,"brand":"FIAT","model":"Uno Economy 2p Flex","year":2008,"price":"12000.0"},{"id":2,"brand":"VW","model":"1.6 MI POWER TOTAL FLEX 8V 4P","year":2008,"price":"19023.0"}]
 ```
 
 Ou, filtrando por marca
 
 ```console
-$ curl localhost:9292/cars?brand=FIAT
+$ curl localhost:9292/cars?brand=FIAT -H 'Authorization: Token token=secret'
 -> [{"id":1,"brand":"FIAT","model":"Uno Economy 2p Flex","year":2008,"price":"12000.0"}]
 ```
 
@@ -92,7 +92,7 @@ $ curl localhost:9292/cars?brand=FIAT
 Traz o carro pelo id passado na url
 
 ```console
-$ curl localhost:9292/cars/1
+$ curl localhost:9292/cars/1 -H 'Authorization: Token token=secret'
 -> {"id":1,"brand":"FIAT","model":"Uno Economy 2p Flex","year":2008,"price":"12000.0"}
 ```
 
@@ -101,7 +101,7 @@ $ curl localhost:9292/cars/1
 Cria um carro
 
 ```console
-$ curl -X POST localhost:9292/cars -d 'brand=VW' -d 'model=1.6 MI POWER TOTAL FLEX 8V 4P' -d 'year=2008' -d 'price=19023'
+$ curl -X POST localhost:9292/cars -H 'Authorization: Token token=secret' -d 'brand=VW' -d 'model=1.6 MI POWER TOTAL FLEX 8V 4P' -d 'year=2008' -d 'price=19023'
 -> {"id":2,"brand":"VW","model":"1.6 MI POWER TOTAL FLEX 8V 4P","year":2008,"price":"19023.0"}
 ```
 
@@ -110,7 +110,7 @@ $ curl -X POST localhost:9292/cars -d 'brand=VW' -d 'model=1.6 MI POWER TOTAL FL
 Atualiza o preço de um carro
 
 ```console
-$ curl -X PUT localhost:9292/cars/1 -d 'price=19022'
+$ curl -X PUT localhost:9292/cars/1 -H 'Authorization: Token token=secret' -d 'price=19022'
 -> {"id":1,"price":"19022.0","brand":"FIAT","model":"Uno Economy 2p Flex","year":2008}
 ```
 
@@ -119,6 +119,6 @@ $ curl -X PUT localhost:9292/cars/1 -d 'price=19022'
 Remove um carro
 
 ```
-$ curl -X DELETE localhost:9292/cars/3
+$ curl -X DELETE localhost:9292/cars/3 -H 'Authorization: Token token=secret'
 -> ""
 ```
