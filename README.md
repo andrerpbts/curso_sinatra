@@ -68,3 +68,57 @@ $ bin/console
 ```
 
 HINT: Certifique-se de dar um `chmod +x bin/console` para que ele seja executável.
+
+#### Rotas disponíveis
+
+##### GET /cars
+
+Traz todos os carros cadastrados
+
+```console
+$ curl localhost:9292/cars
+-> [{"id":1,"brand":"FIAT","model":"Uno Economy 2p Flex","year":2008,"price":"12000.0"},{"id":2,"brand":"VW","model":"1.6 MI POWER TOTAL FLEX 8V 4P","year":2008,"price":"19023.0"}]
+```
+
+Ou, filtrando por marca
+
+```console
+$ curl localhost:9292/cars?brand=FIAT
+-> [{"id":1,"brand":"FIAT","model":"Uno Economy 2p Flex","year":2008,"price":"12000.0"}]
+```
+
+##### GET /cars/:id
+
+Traz o carro pelo id passado na url
+
+```console
+$ curl localhost:9292/cars/1
+-> {"id":1,"brand":"FIAT","model":"Uno Economy 2p Flex","year":2008,"price":"12000.0"}
+```
+
+##### POST /cars
+
+Cria um carro
+
+```console
+$ curl -X POST localhost:9292/cars -d 'brand=VW' -d 'model=1.6 MI POWER TOTAL FLEX 8V 4P' -d 'year=2008' -d 'price=19023'
+-> {"id":2,"brand":"VW","model":"1.6 MI POWER TOTAL FLEX 8V 4P","year":2008,"price":"19023.0"}
+```
+
+##### PUT /cars/:id
+
+Atualiza o preço de um carro
+
+```console
+$ curl -X PUT localhost:9292/cars/1 -d 'price=19022'
+-> {"id":1,"price":"19022.0","brand":"FIAT","model":"Uno Economy 2p Flex","year":2008}
+```
+
+##### DELETE /cars/:id
+
+Remove um carro
+
+```
+$ curl -X DELETE localhost:9292/cars/3
+-> ""
+```
